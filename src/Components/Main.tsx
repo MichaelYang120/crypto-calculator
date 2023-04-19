@@ -1,8 +1,28 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import { api } from '../Api/ApiRequest'
 
+const debug = true;
+
 export default function Main() {
-    console.log(api())
+    const [crypto, setCrypto] = useState([]);
+
+    function showfindticker () {
+
+    }
+    showfindticker()
+
+    useEffect(() => {
+        async function getcrypto () {
+            var result: any = await api()
+            setCrypto(result)
+        }
+        getcrypto()
+        if (debug === true) {
+            // console.log(crypto)
+        }
+
+    }, [])
+
     return (
         <div className='maincontainer'>
             <form className='findtickerform'>
