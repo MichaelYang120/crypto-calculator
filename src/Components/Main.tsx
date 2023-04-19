@@ -5,11 +5,26 @@ const debug = true;
 
 export default function Main() {
     const [crypto, setCrypto] = useState([]);
-
+    
     function showfindticker () {
         const findticker = (event:ChangeEvent<HTMLInputElement>) => {
-            var inputvalue = event.target.value
-            console.log(inputvalue)
+            var inputvalue = event.target.value;
+            // var uppercasevalue = inputvalue.toUpperCase();
+            if (debug === true) {
+                // console.log(inputvalue)
+                // console.log(uppercasevalue)
+                
+            }
+            
+            if(inputvalue.length > 0) {
+                interface val {
+                    "symbol": string
+                }
+                console.log("yes")
+                let cryptosymbol = crypto.map(val => (
+                    console.log(val)
+                ))
+            }
 
         }
         return (
