@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+.findtickerform {
+  text-align: center;
+  padding: 10px 15px;
+}
