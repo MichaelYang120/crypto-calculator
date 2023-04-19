@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react'
+import React, { ChangeEvent, Component, useEffect, useState } from 'react'
 import { api } from '../Api/ApiRequest'
 
 const debug = true;
@@ -7,9 +7,19 @@ export default function Main() {
     const [crypto, setCrypto] = useState([]);
 
     function showfindticker () {
+        const findticker = (event:ChangeEvent<HTMLInputElement>) => {
+            var inputvalue = event.target.value
+            console.log(inputvalue)
 
+        }
+        return (
+            <div className='maincontainer'>
+                <form className='findtickerform'>
+                    <input type="text" onChange={findticker} placeholder='enter your crypto ticker' />
+                </form>
+            </div>
+        )
     }
-    showfindticker()
 
     useEffect(() => {
         async function getcrypto () {
@@ -24,11 +34,9 @@ export default function Main() {
     }, [])
 
     return (
-        <div className='maincontainer'>
-            <form className='findtickerform'>
-                <input type="text" placeholder='enter your crypto ticker' />
-            </form>
-        </div>
+        <>
+            {showfindticker()}
+        </>
     )
 
 }
