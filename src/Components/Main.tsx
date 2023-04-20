@@ -5,7 +5,6 @@ const debug = true;
 
 export default function Main() {
     const [crypto, setCrypto] = useState([]);
-    const [indexSymbol, setIndexSymbol] = useState(0);
     const [indexSymbolvalue, setIndexSymbolvalue] = useState("");
 
     function showfindticker() {
@@ -20,11 +19,6 @@ export default function Main() {
 
             }
 
-            // if (inputvalue.length > 0) {
-            //     interface val {
-            //         "symbol": string
-            //     }
-            // }
             if(indexSymbolvalue === "" && uppercasevalue.length > 0) {
                 setIndexSymbolvalue(uppercasevalue)
             } else {
