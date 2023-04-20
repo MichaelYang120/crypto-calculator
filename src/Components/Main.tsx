@@ -8,8 +8,6 @@ export default function Main() {
     const [indexSymbol, setIndexSymbol] = useState(0);
     const [indexSymbolvalue, setIndexSymbolvalue] = useState("");
 
-
-
     function showfindticker() {
         const findticker = (event: ChangeEvent<HTMLInputElement>) => {
             var inputvalue = event.target.value;
@@ -28,7 +26,6 @@ export default function Main() {
                 }
                 crypto.map(val => {
                     var test: any = val["symbol"]
-                    // return test
                     
                     // we are checking if the indexsymbolvalue is set to default = empty string
                     if(indexSymbolvalue === "") {
