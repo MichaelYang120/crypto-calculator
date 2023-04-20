@@ -6,6 +6,7 @@ const debug = true;
 export default function Main() {
     const [crypto, setCrypto] = useState([]);
     const [indexSymbolvalue, setIndexSymbolvalue] = useState("");
+    const [sugestions, setSugestions] = useState("");
 
     function showfindticker() {
         const findticker = (event: ChangeEvent<HTMLInputElement>) => {
@@ -27,7 +28,9 @@ export default function Main() {
                     var test: any = val["symbol"]
                     // used startswith to find same value of crypto symbol
                     if(test.startsWith(indexSymbolvalue)) {
-                        console.log(test)
+                        test = Array(test)
+                        setSugestions(test)
+                        // console.log(test)
                     }
                     setIndexSymbolvalue(uppercasevalue)
                 })
@@ -41,6 +44,10 @@ export default function Main() {
                 </form>
             </div>
         )
+    }
+
+    function showsugestions () {
+
     }
 
     useEffect(() => {
