@@ -29,33 +29,24 @@ export default function Main() {
                 crypto.map(val => {
                     var test: any = val["symbol"]
                     // return test
+                    
+                    // we are checking if the indexsymbolvalue is set to default = empty string
+                    if(indexSymbolvalue === "") {
+                        // we are setting the indexsymbolvalue
+                        setIndexSymbolvalue(test[indexSymbol])
+                        setIndexSymbol(indexSymbol + 1)
+                    } else {
+                        if (uppercasevalue[indexSymbol] === test[indexSymbol]) {
 
-                    function testing() {
-                        // we are checking if the indexsymbolvalue is set to default = empty string
-                        if(indexSymbolvalue === "") {
-                            // we are setting the indexsymbolvalue
-                            setIndexSymbolvalue(test[indexSymbol])
-                            setIndexSymbol(indexSymbol + 1)
-                        } else {
-                            if (uppercasevalue[indexSymbol] === test[indexSymbol]) {
-
-                                console.log(indexSymbolvalue + "value")
-                                if(indexSymbolvalue[indexSymbolvalue.length] === test[indexSymbol]) {
-                                    console.log(test)
-                                }
+                            console.log(indexSymbolvalue + "value")
+                            if(indexSymbolvalue[indexSymbolvalue.length] === test[indexSymbol]) {
+                                console.log(test)
+                                console.log(indexSymbolvalue)
                                 setIndexSymbolvalue(indexSymbolvalue + test[indexSymbol])
+
                             }
                         }
-
-                        // console.log((indexSymbolvalue))
-                        // console.log(test[indexSymbol] + uppercasevalue[indexSymbol])
-
-                        // setIndexSymbol(indexSymbol + 1);
-    
-
                     }
-                    // we are checking to see if the indexes are the same
-                    testing()
                 })
                 // console.log("yes")
                 // console.log(indexSymbol)
