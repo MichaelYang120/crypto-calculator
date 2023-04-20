@@ -5,37 +5,48 @@ const debug = true;
 
 export default function Main() {
     const [crypto, setCrypto] = useState([]);
+    const [indexSymbol, setIndexSymbol] = useState(0);
+    const [indexSymbolvalue, setIndexSymbolvalue] = useState("");
 
 
-    
-    function showfindticker () {
-        const findticker = (event:ChangeEvent<HTMLInputElement>) => {
+
+    function showfindticker() {
+        const findticker = (event: ChangeEvent<HTMLInputElement>) => {
             var inputvalue = event.target.value;
             var uppercasevalue = inputvalue.toUpperCase();
             if (debug === true) {
                 // console.log(inputvalue)
                 // console.log(uppercasevalue)
                 // console.log(inputvalue[0])
-                
+
+
             }
-            
-            if(inputvalue.length > 0) {
+
+            if (inputvalue.length > 0) {
                 interface val {
                     "symbol": string
                 }
-                // console.log("yes")
-                let cryptosymbol = crypto.map( val => {
-                    // console.log(val["symbol"])
-                    var test:any = val["symbol"]
-                    let i = 0;
-
-                    if(test[0] === uppercasevalue[0]) {
-                        if(test[1] === uppercasevalue[1]) {
-                            console.log(test)
+                let cryptosymbol = crypto.map(val => {
+                    var test: any = val["symbol"]
+                    // return test
+                    if (test[indexSymbol] === uppercasevalue[indexSymbol]) {
+                        // console.log(indexSymbol)
+                        setIndexSymbol(indexSymbol + 1);
+                        
+                        if(indexSymbolvalue === "") {
+                            setIndexSymbolvalue(test[indexSymbol])
+                        } else {
+                            setIndexSymbolvalue(indexSymbolvalue + test[indexSymbol])
                         }
-                    }
-                })
+                        console.log((indexSymbolvalue))
+                        console.log(test[indexSymbol] + uppercasevalue[indexSymbol])
 
+
+                    }
+    
+                })
+                // console.log("yes")
+                console.log(indexSymbol)
             }
 
         }
@@ -49,7 +60,7 @@ export default function Main() {
     }
 
     useEffect(() => {
-        async function getcrypto () {
+        async function getcrypto() {
             var result: any = await api()
             setCrypto(result)
         }
