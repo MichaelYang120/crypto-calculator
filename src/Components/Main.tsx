@@ -20,23 +20,21 @@ export default function Main() {
 
             }
 
-            if(indexSymbolvalue === "" && uppercasevalue.length > 0) {
+            if (indexSymbolvalue === "" && uppercasevalue.length > 0) {
                 setIndexSymbolvalue(uppercasevalue)
             } else {
-                console.log(indexSymbolvalue)
+                setIndexSymbolvalue(uppercasevalue)
+                console.log(uppercasevalue)
                 crypto.map(val => {
                     var test: any = val["symbol"]
                     // used startswith to find same value of crypto symbol
-                    if(test.startsWith(indexSymbolvalue)) {
-                        test = Array(test)
-                        setSuggestions(test)
-                        // console.log(test)
-                    }
-                    setIndexSymbolvalue(uppercasevalue)
+                    setSuggestions(test)
+                    showsugestions(test)
                 })
             }
 
         }
+
         return (
             <div className='maincontainer'>
                 <form className='findtickerform'>
@@ -46,8 +44,12 @@ export default function Main() {
         )
     }
 
-    function showsugestions () {
-
+    function showsugestions(test:any) {
+        if (test.startsWith(indexSymbolvalue)) {
+            test = Array(test)
+            setSuggestions(test)
+            console.log(test)
+        }
     }
 
     useEffect(() => {
