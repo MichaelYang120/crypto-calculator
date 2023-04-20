@@ -20,33 +20,23 @@ export default function Main() {
 
             }
 
-            if (inputvalue.length > 0) {
-                interface val {
-                    "symbol": string
-                }
+            // if (inputvalue.length > 0) {
+            //     interface val {
+            //         "symbol": string
+            //     }
+            // }
+            if(indexSymbolvalue === "" && uppercasevalue.length > 0) {
+                setIndexSymbolvalue(uppercasevalue)
+            } else {
+                console.log(indexSymbolvalue)
                 crypto.map(val => {
                     var test: any = val["symbol"]
-                    
-                    // we are checking if the indexsymbolvalue is set to default = empty string
-                    if(indexSymbolvalue === "") {
-                        // we are setting the indexsymbolvalue
-                        setIndexSymbolvalue(test[indexSymbol])
-                        setIndexSymbol(indexSymbol + 1)
-                    } else {
-                        if (uppercasevalue[indexSymbol] === test[indexSymbol]) {
-
-                            console.log(indexSymbolvalue + "value")
-                            if(indexSymbolvalue[indexSymbolvalue.length] === test[indexSymbol]) {
-                                console.log(test)
-                                console.log(indexSymbolvalue)
-                                setIndexSymbolvalue(indexSymbolvalue + test[indexSymbol])
-
-                            }
-                        }
+                    // used startswith to find same value of crypto symbol
+                    if(test.startsWith(indexSymbolvalue)) {
+                        console.log(test)
                     }
+                    setIndexSymbolvalue(uppercasevalue)
                 })
-                // console.log("yes")
-                // console.log(indexSymbol)
             }
 
         }
