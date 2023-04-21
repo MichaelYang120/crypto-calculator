@@ -1,12 +1,13 @@
 import React, { ChangeEvent, Component, useEffect, useState } from 'react'
 import { api } from '../Api/ApiRequest'
+import { render } from '@testing-library/react';
 
 const debug = true;
 
 export default function Main() {
     const [crypto, setCrypto] = useState([]);
     const [indexSymbolvalue, setIndexSymbolvalue] = useState("");
-    const [suggestions, setSuggestions] = useState("");
+    const [suggestions, setSuggestions] = useState([]);
 
     function showfindticker() {
         const findticker = (event: ChangeEvent<HTMLInputElement>) => {
@@ -24,12 +25,27 @@ export default function Main() {
                 setIndexSymbolvalue(uppercasevalue)
             } else {
                 setIndexSymbolvalue(uppercasevalue)
-                console.log(uppercasevalue)
+                // console.log(uppercasevalue)
                 crypto.map(val => {
                     var test: any = val["symbol"]
                     // used startswith to find same value of crypto symbol
-                    setSuggestions(test)
-                    showsugestions(test)
+                    // setSuggestions(test)
+                    // showsugestions(test)
+
+                    if (test.startsWith(indexSymbolvalue)) {
+                        // test = Array(test)
+                        console.log(indexSymbolvalue)
+                        setSuggestions(test)
+                        console.log(test)
+                        render(
+                            <>
+                                <ul>
+                                    <li>{test}</li>
+                                </ul>
+                            </>
+                        )
+
+                    }
                 })
             }
 
@@ -45,11 +61,19 @@ export default function Main() {
     }
 
     function showsugestions(test:any) {
-        if (test.startsWith(indexSymbolvalue)) {
-            test = Array(test)
-            setSuggestions(test)
-            console.log(test)
-        }
+        // if (test.startsWith(indexSymbolvalue)) {
+        //     // test = Array(test)
+        //     setSuggestions(test)
+        //     console.log(test)
+        //     render(
+        //         <>
+        //             <ul>
+        //                 <li>{test}</li>
+        //             </ul>
+        //         </>
+        //     )
+
+        // }
     }
 
     useEffect(() => {
@@ -67,6 +91,7 @@ export default function Main() {
     return (
         <>
             {showfindticker()}
+            {/* {suggestionshere()} */}
         </>
     )
 
