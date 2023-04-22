@@ -1,26 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { api } from '../Api/ApiRequest'
-import { render } from '@testing-library/react';
 
 const debug = true;
 
 export default function Main() {
     const [crypto, setCrypto] = useState([]);
 
-    function showfindticker() {
-        // console.log(crypto)
-        return (
-            crypto.map(val => {
-                var symbol: any = val["symbol"]
-                // var askPrice: any = val["askPrice"]
-                {{<>
-                    <div>{symbol}</div>
-                </>}}
-                
-            })
-
-        )
-    }
 
     useEffect(() => {
         async function getcrypto() {
@@ -37,7 +22,17 @@ export default function Main() {
 
     return (
         <>
-            {showfindticker()}
+            {
+                crypto.map(({ symbol }) =>
+                    <div className="cryptocontainer">
+                        <div className='cryptoinnercontainer'>
+                            <h2 className='cryptoname'>{symbol}</h2>
+                            <div className='buttoncontainer'>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
         </>
     )
 
