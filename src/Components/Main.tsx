@@ -45,7 +45,7 @@ export default function Main() {
                                     <div className='cryptoinnercontainer'>
                                         <div>
                                             <p>Asking Price : {val["askPrice"]}</p>
-                                            <input type='number' data-askingprice={val["askPrice"]} placeholder='Estimate My Asking Price' onChange={askingprice}/>
+                                            <input className={"input" + val["symbol"]} type='number' data-askingprice={val["askPrice"]} placeholder='Estimate My Asking Price' onChange={askingprice}/>
                                             <p>Bid Price : {val["bidPrice"]}</p>
                                             <input placeholder='Estimate My Bid Price' />
                                         </div>
