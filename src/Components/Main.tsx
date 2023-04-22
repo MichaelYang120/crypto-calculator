@@ -14,7 +14,7 @@ export default function Main() {
         }
         getcrypto()
         if (debug === true) {
-            // console.log(crypto)
+            console.log(crypto)
         }
 
 
@@ -23,13 +23,17 @@ export default function Main() {
     return (
         <>
             {
-                crypto.map(({ symbol }) =>
+                crypto.map(({ symbol, bidPrice, askPrice }) =>
                     <div className="cryptocontainer">
-                        <div className='cryptoinnercontainer'>
-                            <h2 className='cryptoname'>{symbol}</h2>
-                            <div className='buttoncontainer'>
+                        <h2 className='cryptoname'>{symbol}</h2>
+                            <div className='cryptoinnercontainer'>
+                                <div>
+                                    <p>Asking Price : {askPrice}</p>
+                                </div>
+                                <div>
+                                    <p>Bid Price : {bidPrice}</p>
+                                </div>
                             </div>
-                        </div>
                     </div>
                 )
             }
