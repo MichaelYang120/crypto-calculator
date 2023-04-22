@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 
 const debug = true;
 
-export default function Main() {
+export default function SuggestionPage() {
     const [crypto, setCrypto] = useState([]);
     const [indexSymbolvalue, setIndexSymbolvalue] = useState("");
     const [suggestions, setSuggestions] = useState([]);
