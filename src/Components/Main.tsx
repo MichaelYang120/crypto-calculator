@@ -1,5 +1,6 @@
-import React, { useEffect, useState, ChangeEvent } from 'react'
+import React, { useEffect, useState, ChangeEvent, createElement } from 'react'
 import { api } from '../Api/ApiRequest'
+import { render } from '@testing-library/react';
 
 const debug = true;
 
@@ -16,7 +17,6 @@ export default function Main() {
         // setaskingpricevalue(askingpriceset)
         event.target.setAttribute("mynewaskprice", askingpriceset)
         console.log(event.target.getAttribute("mynewaskprice"))
-
 
     }
 
