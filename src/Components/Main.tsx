@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, ChangeEvent } from 'react'
 import { api } from '../Api/ApiRequest'
 
 const debug = true;
 
 export default function Main() {
     const [crypto, setCrypto] = useState([]);
+
+    const askingprice = (event: ChangeEvent<HTMLInputElement>) => {
+        console.log(event.target.value)
+    }
 
     useEffect(() => {
         async function getcrypto() {
@@ -31,9 +35,11 @@ export default function Main() {
                                     <div className='cryptoinnercontainer'>
                                         <div>
                                             <p>Asking Price : {val["askPrice"]}</p>
-                                        </div>
-                                        <div>
+                                            <input type='text' placeholder='Estimate My Asking Price' onChange={askingprice}/>
+                                            <p></p>
                                             <p>Bid Price : {val["bidPrice"]}</p>
+                                            <input placeholder='Estimate My Bid Price' />
+                                            <p></p>
                                         </div>
                                     </div>
                                 </div>                            
