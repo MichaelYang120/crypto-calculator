@@ -12,9 +12,11 @@ export default function Main() {
         var dataaskingprice = event.target.getAttribute("data-askingprice")
         var newaskingprice = Number(myaskingprice) * Number(dataaskingprice)
         var askingpriceset = newaskingprice.toString()
-        // setaskingpricevalue(askingpriceset)
         event.target.setAttribute("mynewaskprice", askingpriceset)
-        console.log(event.target.getAttribute("mynewaskprice"))
+        const test = event.target.ATTRIBUTE_NODE
+        var rootElement = event.target.getAttribute("data-askingprice")
+        var element = React.createElement("div", {className:"data-askingprice"}, test)
+        ReactDOM.render(element, rootElement);
 
     }
 
