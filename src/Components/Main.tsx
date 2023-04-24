@@ -5,6 +5,7 @@ const debug = true;
 
 export default function Main() {
     const [crypto, setCrypto] = useState([]);
+    const [value, setvalue] = useState("");
 
     const askingprice = (event: ChangeEvent<HTMLInputElement>) => {
         console.log(event.target.value)
@@ -12,11 +13,12 @@ export default function Main() {
         var dataaskingprice = event.target.getAttribute("data-askingprice")
         var newaskingprice = Number(myaskingprice) * Number(dataaskingprice)
         var askingpriceset = newaskingprice.toString()
+        setvalue(askingpriceset)
         event.target.setAttribute("mynewaskprice", askingpriceset)
         const test = event.target.ATTRIBUTE_NODE
         var rootElement = event.target.getAttribute("data-askingprice")
         var element = React.createElement("div", {className:"data-askingprice"}, test)
-        ReactDOM.render(element, rootElement);
+
 
     }
 
@@ -46,6 +48,7 @@ export default function Main() {
                                         <div>
                                             <p>Asking Price : {val["askPrice"]}</p>
                                             <input className={"input" + val["symbol"]} type='number' data-askingprice={val["askPrice"]} placeholder='Estimate My Asking Price' onChange={askingprice}/>
+                                            <input className={"input" + val["symbol"]} type='number' value={value}/>
                                             <p>Bid Price : {val["bidPrice"]}</p>
                                             <input placeholder='Estimate My Bid Price' />
                                         </div>
