@@ -16,9 +16,6 @@ export default function Main() {
         setvalue(askingpriceset)
         event.target.setAttribute("mynewaskprice", askingpriceset)
         const test = event.target.ATTRIBUTE_NODE
-        var rootElement = event.target.getAttribute("data-askingprice")
-        var element = React.createElement("div", {className:"data-askingprice"}, test)
-
 
     }
 
@@ -31,8 +28,8 @@ export default function Main() {
         if (debug === true) {
             console.log(crypto)
         }
-        
-        
+
+
     }, [])
 
     return (
@@ -47,13 +44,13 @@ export default function Main() {
                                     <div className='cryptoinnercontainer'>
                                         <div>
                                             <p>Asking Price : {val["askPrice"]}</p>
-                                            <input className={"input" + val["symbol"]} type='number' data-askingprice={val["askPrice"]} placeholder='Estimate My Asking Price' onChange={askingprice}/>
-                                            <input className={"input" + val["symbol"]} type='number' value={value}/>
+                                            <input className={"input" + val["symbol"]} type='number' data-askingprice={val["askPrice"]} placeholder='Estimate My Asking Price' onChange={askingprice} />
+                                            <input className={"input" + val["symbol"]} type='number' value={value} />
                                             <p>Bid Price : {val["bidPrice"]}</p>
                                             <input placeholder='Estimate My Bid Price' />
                                         </div>
                                     </div>
-                                </div>                            
+                                </div>
                             </>
                         )
                     }
