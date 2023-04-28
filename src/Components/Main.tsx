@@ -10,6 +10,7 @@ export default function Main() {
         console.log(event.target.value)
         var myaskingprice = event.target.value
         var dataaskingprice = event.target.getAttribute("data-askingprice")
+        // this is where we are calculating the askingprice
         var newaskingprice = Number(myaskingprice) * Number(dataaskingprice)
         var askingpriceset = newaskingprice.toString()
         event.target.setAttribute("mynewaskprice", askingpriceset)
@@ -30,9 +31,6 @@ export default function Main() {
 
             console.log(getclassname);
         }
-
-        
-        
 
     }
 
