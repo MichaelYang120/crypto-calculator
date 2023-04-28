@@ -17,8 +17,12 @@ export default function Main() {
         event.target.setAttribute("mynewaskprice", askingpriceset)
         var targetclass = event.target.getAttribute("class")
         var stgtargetclass = targetclass?.toString()
-        const test = event.target.ATTRIBUTE_NODE
+        console.log(stgtargetclass)
         var getclassname = document.getElementById(`${stgtargetclass}`)
+        if (getclassname !== null) {
+            getclassname.innerText = askingpriceset;
+
+        }
         console.log(getclassname);
 
         
@@ -51,7 +55,7 @@ export default function Main() {
                                     <div className='cryptoinnercontainer'>
                                         <div>
                                             <p>Asking Price : {val["askPrice"]}</p>
-                                            <input className={"input" + val["symbol"]} type='number' data-askingprice={val["askPrice"]} placeholder='Estimate My Asking Price' onChange={askingprice} />
+                                            <input className={val["symbol"]} type='number' data-askingprice={val["askPrice"]} placeholder='Estimate My Asking Price' onChange={askingprice} />
                                             <input className={"input" + val["symbol"] + "show"} id={val["symbol"]} type='number'/>
                                             <p>Bid Price : {val["bidPrice"]}</p>
                                             <input placeholder='Estimate My Bid Price' />
