@@ -20,8 +20,7 @@ export default function Main() {
         console.log(stgtargetclass)
         var getclassname = document.getElementById(`${stgtargetclass}`)
         if (getclassname !== null) {
-            getclassname.innerText = askingpriceset;
-
+            getclassname.innerText = "My asking price would be " + askingpriceset;
         }
         console.log(getclassname);
 
@@ -56,7 +55,7 @@ export default function Main() {
                                         <div>
                                             <p>Asking Price : {val["askPrice"]}</p>
                                             <input className={val["symbol"]} type='number' data-askingprice={val["askPrice"]} placeholder='Estimate My Asking Price' onChange={askingprice} />
-                                            <input className={"input" + val["symbol"] + "show"} id={val["symbol"]} type='number'/>
+                                            <p className={"input" + val["symbol"] + "show"} id={val["symbol"]}/>
                                             <p>Bid Price : {val["bidPrice"]}</p>
                                             <input placeholder='Estimate My Bid Price' />
                                         </div>
