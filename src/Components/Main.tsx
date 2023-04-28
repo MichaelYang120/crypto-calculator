@@ -5,7 +5,6 @@ const debug = true;
 
 export default function Main() {
     const [crypto, setCrypto] = useState([]);
-    const [value, setvalue] = useState("");
 
     const askingprice = (event: ChangeEvent<HTMLInputElement>) => {
         console.log(event.target.value)
@@ -13,16 +12,24 @@ export default function Main() {
         var dataaskingprice = event.target.getAttribute("data-askingprice")
         var newaskingprice = Number(myaskingprice) * Number(dataaskingprice)
         var askingpriceset = newaskingprice.toString()
-        setvalue(askingpriceset)
         event.target.setAttribute("mynewaskprice", askingpriceset)
         var targetclass = event.target.getAttribute("class")
         var stgtargetclass = targetclass?.toString()
-        console.log(stgtargetclass)
+        if(debug === true) {
+
+            console.log(stgtargetclass)
+        }
         var getclassname = document.getElementById(`${stgtargetclass}`)
         if (getclassname !== null) {
             getclassname.innerText = "My asking price would be " + askingpriceset;
+        } else {
+            console.log("getclassname is null");
+            alert("We are having technical difficulty please try again later.")
         }
-        console.log(getclassname);
+        if(debug === true) {
+
+            console.log(getclassname);
+        }
 
         
         
