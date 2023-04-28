@@ -7,29 +7,35 @@ export default function Main() {
     const [crypto, setCrypto] = useState([]);
 
     const askingprice = (event: ChangeEvent<HTMLInputElement>) => {
-        console.log(event.target.value)
+        if(debug === true) {
+            
+            console.log(event.target.value)
+        }
         var myaskingprice = event.target.value
         var dataaskingprice = event.target.getAttribute("data-askingprice")
         // this is where we are calculating the askingprice
         var newaskingprice = Number(myaskingprice) * Number(dataaskingprice)
         var askingpriceset = newaskingprice.toString()
-        event.target.setAttribute("mynewaskprice", askingpriceset)
+        // event.target.setAttribute("mynewaskprice", askingpriceset)
         var targetclass = event.target.getAttribute("class")
-        var stgtargetclass = targetclass?.toString()
-        if(debug === true) {
+        if(targetclass !== null) {
+            var stgtargetclass = targetclass?.toString()
 
-            console.log(stgtargetclass)
-        }
-        var getclassname = document.getElementById(`${stgtargetclass}`)
-        if (getclassname !== null) {
-            getclassname.innerText = "My asking price would be " + askingpriceset;
-        } else {
-            console.log("getclassname is null");
-            alert("We are having technical difficulty please try again later.")
-        }
-        if(debug === true) {
-
-            console.log(getclassname);
+            if(debug === true) {
+    
+                console.log(stgtargetclass)
+            }
+            var getclassname = document.getElementById(`${stgtargetclass}`)
+            if (getclassname !== null) {
+                getclassname.innerText = "My asking price would be: " + askingpriceset;
+            } else {
+                console.log("getclassname is null");
+                alert("We are having technical difficulty please try again later.")
+            }
+            if(debug === true) {
+    
+                console.log(getclassname);
+            }
         }
 
     }
