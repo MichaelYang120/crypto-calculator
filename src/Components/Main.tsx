@@ -58,12 +58,12 @@ export default function Main() {
 
                 console.log(stgtargetclass)
             }
-            var getclassname = document.getElementById(`"bid" + ${stgtargetclass}`)
+            var getclassname = document.getElementById(`"bidprice" + ${stgtargetclass}`)
             if (getclassname !== null) {
                 getclassname.innerText = "My bidprice would be: " + bidpriceset;
             } else {
                 console.log("getclassname is null");
-                alert("We are having technical difficulty please try again later.")
+                // alert("We are having technical difficulty please try again later.")
             }
             if (debug === true) {
 
@@ -101,7 +101,7 @@ export default function Main() {
                                             <input className={val["symbol"]} type='number' data-askingprice={val["askPrice"]} placeholder='Estimate My Asking Price' onChange={askingprice} />
                                             <p className={"input" + val["symbol"] + "show"} id={val["symbol"]}/>
                                             <p>Bid Price : {val["bidPrice"]}</p>
-                                            <input placeholder='Estimate My Bid Price' data-bidprice={val["bidPrice"]} type='number' onChange={bidprice}/>
+                                            <input className={"bidprice" + val["symbol"]} placeholder='Estimate My Bid Price' data-bidprice={val["bidPrice"]} type='number' onChange={bidprice}/>
                                             <p id={"bid" + val["symbol"]} />
                                         </div>
                                     </div>
