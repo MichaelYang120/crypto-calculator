@@ -47,10 +47,9 @@ export default function Main() {
         var mybidprice = event.target.value
         var databidprice = event.target.getAttribute("data-bidprice")
         var datasymbol = event.target.getAttribute("data-symbol")
-        // this is where we are calculating the askingprice
+        // this is where we are calculating the bidprice
         var newbidprice = Number(mybidprice) * Number(databidprice)
         var bidpriceset = newbidprice.toString()
-        // event.target.setAttribute("mynewaskprice", askingpriceset)
         var targetclass = event.target.getAttribute("class")
         if (targetclass !== null) {
             var stgtargetclass = targetclass?.toString()
@@ -64,7 +63,7 @@ export default function Main() {
                 getclassname.innerText = "My bidprice would be: " + bidpriceset;
             } else {
                 console.log("getclassname is null");
-                // alert("We are having technical difficulty please try again later.")
+                alert("We are having technical difficulty please try again later.")
             }
             if (debug === true) {
 
@@ -73,6 +72,8 @@ export default function Main() {
         }
 
     }
+
+    // question: can we abstract these function, they look the same?
 
     useEffect(() => {
         async function getcrypto() {
