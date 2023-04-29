@@ -40,6 +40,11 @@ export default function Main() {
 
     }
 
+    const bidprice = (event: ChangeEvent<HTMLInputElement>) => {
+
+
+    }
+
     useEffect(() => {
         async function getcrypto() {
             var result: any = await api()
@@ -68,7 +73,8 @@ export default function Main() {
                                             <input className={val["symbol"]} type='number' data-askingprice={val["askPrice"]} placeholder='Estimate My Asking Price' onChange={askingprice} />
                                             <p className={"input" + val["symbol"] + "show"} id={val["symbol"]}/>
                                             <p>Bid Price : {val["bidPrice"]}</p>
-                                            <input placeholder='Estimate My Bid Price' />
+                                            <input placeholder='Estimate My Bid Price' data-bidprice={val["bidPrice"]} type='number' onChange={bidprice}/>
+                                            <p className={"input" + val["symbol"] + "show"} id={"bid" + val["symbol"]} />
                                         </div>
                                     </div>
                                 </div>
