@@ -41,7 +41,35 @@ export default function Main() {
     }
 
     const bidprice = (event: ChangeEvent<HTMLInputElement>) => {
+        if (debug === true) {
+            console.log(event.target.value)
+        }
+        var mybidprice = event.target.value
+        var databidprice = event.target.getAttribute("data-bidprice")
+        // this is where we are calculating the askingprice
+        var newbidprice = Number(mybidprice) * Number(databidprice)
+        var bidpriceset = newbidprice.toString()
+        // event.target.setAttribute("mynewaskprice", askingpriceset)
+        var targetclass = event.target.getAttribute("class")
+        if (targetclass !== null) {
+            var stgtargetclass = targetclass?.toString()
 
+            if (debug === true) {
+
+                console.log(stgtargetclass)
+            }
+            var getclassname = document.getElementById(`"bid" + ${stgtargetclass}`)
+            if (getclassname !== null) {
+                getclassname.innerText = "My bidprice would be: " + bidpriceset;
+            } else {
+                console.log("getclassname is null");
+                alert("We are having technical difficulty please try again later.")
+            }
+            if (debug === true) {
+
+                console.log(getclassname);
+            }
+        }
 
     }
 
@@ -74,7 +102,7 @@ export default function Main() {
                                             <p className={"input" + val["symbol"] + "show"} id={val["symbol"]}/>
                                             <p>Bid Price : {val["bidPrice"]}</p>
                                             <input placeholder='Estimate My Bid Price' data-bidprice={val["bidPrice"]} type='number' onChange={bidprice}/>
-                                            <p className={"input" + val["symbol"] + "show"} id={"bid" + val["symbol"]} />
+                                            <p id={"bid" + val["symbol"]} />
                                         </div>
                                     </div>
                                 </div>
