@@ -46,6 +46,7 @@ export default function Main() {
         }
         var mybidprice = event.target.value
         var databidprice = event.target.getAttribute("data-bidprice")
+        var datasymbol = event.target.getAttribute("data-symbol")
         // this is where we are calculating the askingprice
         var newbidprice = Number(mybidprice) * Number(databidprice)
         var bidpriceset = newbidprice.toString()
@@ -58,7 +59,7 @@ export default function Main() {
 
                 console.log(stgtargetclass)
             }
-            var getclassname = document.getElementById(`"bidprice" + ${stgtargetclass}`)
+            var getclassname = document.getElementById(`bid${datasymbol}`)
             if (getclassname !== null) {
                 getclassname.innerText = "My bidprice would be: " + bidpriceset;
             } else {
@@ -101,7 +102,7 @@ export default function Main() {
                                             <input className={val["symbol"]} type='number' data-askingprice={val["askPrice"]} placeholder='Estimate My Asking Price' onChange={askingprice} />
                                             <p className={"input" + val["symbol"] + "show"} id={val["symbol"]}/>
                                             <p>Bid Price : {val["bidPrice"]}</p>
-                                            <input className={"bidprice" + val["symbol"]} placeholder='Estimate My Bid Price' data-bidprice={val["bidPrice"]} type='number' onChange={bidprice}/>
+                                            <input className={"bidprice" + val["symbol"]} placeholder='Estimate My Bid Price' data-bidprice={val["bidPrice"]} type='number' onChange={bidprice} data-symbol={val["symbol"]}/>
                                             <p id={"bid" + val["symbol"]} />
                                         </div>
                                     </div>
