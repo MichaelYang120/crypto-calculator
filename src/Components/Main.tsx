@@ -8,13 +8,13 @@ export default function Main() {
 
     const updateprice = (event:ChangeEvent<HTMLInputElement>) => {
         var target = event.target;
-        var targetclass = event.target.getAttribute("class")
+        var targetclass = target.getAttribute("class")
+        var targetval = target.value
         if(targetclass?.includes("bidprice")) {
-            var mybidprice = event.target.value
-            var databidprice = event.target.getAttribute("data-bidprice")
-            var datasymbol = event.target.getAttribute("data-symbol")
+            var databidprice = target.getAttribute("data-bidprice")
+            var datasymbol = target.getAttribute("data-symbol")
             // this is where we are calculating the bidprice
-            var newbidprice = Number(mybidprice) * Number(databidprice)
+            var newbidprice = Number(targetval) * Number(databidprice)
             var bidpriceset = newbidprice.toString()
             // var targetclass = event.target.getAttribute("class")
             var stgtargetclass = targetclass?.toString()
@@ -40,11 +40,10 @@ export default function Main() {
         console.log(targetclass)
         if(targetclass?.includes("askprice")) {
             console.log("hit")
-            var myaskingprice = target.value
             var dataaskingprice = target.getAttribute("data-askprice")
             // this is where we are calculating the askingprice
-            var datasymbol = event.target.getAttribute("data-symbol")
-            var newaskingprice = Number(myaskingprice) * Number(dataaskingprice)
+            var datasymbol = target.getAttribute("data-symbol")
+            var newaskingprice = Number(targetval) * Number(dataaskingprice)
             var askingpriceset = newaskingprice.toString()
             // event.target.setAttribute("mynewaskprice", askingpriceset)
             var stgtargetclass = targetclass?.toString()
