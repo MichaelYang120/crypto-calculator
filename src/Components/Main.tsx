@@ -11,18 +11,17 @@ export default function Main() {
         var targetclass = target.getAttribute("class")
         var targetval = target.value
         var datasymbol = target.getAttribute("data-symbol")
+        
         function calculateprice (price:any) {
             var newbidprice = Number(targetval) * Number(price)
             var bidpriceset = newbidprice.toString()
             return bidpriceset
         }
-        if(targetclass?.includes("bidprice")) {
-            var databidprice = target.getAttribute("data-bidprice")
-            var bidpriceset = calculateprice(databidprice)
-            var getclassname = document.getElementById(`bid${datasymbol}`)
+        function updatetext (priceset:any, pricetype:string) {
+            var getclassname = document.getElementById(`${pricetype}${datasymbol}`)
             console.log(getclassname)
             if (getclassname !== null) {
-                getclassname.innerText = "My bidprice would be: " + bidpriceset;
+                getclassname.innerText = `My ${pricetype} price would be: ` + priceset;
             } else {
                 console.log("getclassname is null");
                 alert("We are having technical difficulty please try again later.")
@@ -30,30 +29,21 @@ export default function Main() {
             if (debug === true) {
 
                 console.log(getclassname);
-            }
-
-        }
-        console.log(targetclass)
-        if(targetclass?.includes("askprice")) {
-            console.log("hit")
-            var dataaskingprice = target.getAttribute("data-askprice")
-            var askingpriceset = calculateprice(dataaskingprice)
-            var getclassname = document.getElementById(`ask${datasymbol}`)
-            if (debug === true) {
-
-                console.log(getclassname);
-            }
-            if (getclassname !== null) {
-                getclassname.innerText = "My asking price would be: " + askingpriceset;
-            } else {
-                console.log("getclassname is null");
-                alert("We are having technical difficulty please try again later.")
             }
  
         }
+        if(targetclass?.includes("bidprice")) {
+            var databidprice = target.getAttribute("data-bidprice")
+            var bidpriceset = calculateprice(databidprice)
+            updatetext(bidpriceset, "bid")
+        }
+        if(targetclass?.includes("askprice")) {
+            var dataaskprice = target.getAttribute("data-askprice")
+            var askpriceset = calculateprice(dataaskprice)
+            updatetext(askpriceset, "ask")
+ 
+        }
     }
-
-    // question: can we abstract these function, they look the same?
 
     useEffect(() => {
         async function getcrypto() {
