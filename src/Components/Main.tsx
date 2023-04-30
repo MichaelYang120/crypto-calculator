@@ -17,7 +17,7 @@ export default function Main() {
             var bidpriceset = newbidprice.toString()
             return bidpriceset
         }
-        function updatetext (priceset:any, pricetype:string) {
+        function updatetext (priceset:string, pricetype:string) {
             var getclassname = document.getElementById(`${pricetype}${datasymbol}`)
             console.log(getclassname)
             if (getclassname !== null) {
