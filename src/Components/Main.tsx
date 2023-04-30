@@ -73,6 +73,68 @@ export default function Main() {
 
     }
 
+    const updateprice = (event:ChangeEvent<HTMLInputElement>) => {
+        var target = event.target;
+        var targetclass = event.target.getAttribute("class")
+        if(targetclass?.includes("bidprice")) {
+            var mybidprice = event.target.value
+            var databidprice = event.target.getAttribute("data-bidprice")
+            var datasymbol = event.target.getAttribute("data-symbol")
+            // this is where we are calculating the bidprice
+            var newbidprice = Number(mybidprice) * Number(databidprice)
+            var bidpriceset = newbidprice.toString()
+            var targetclass = event.target.getAttribute("class")
+            if (targetclass !== null) {
+                var stgtargetclass = targetclass?.toString()
+
+                if (debug === true) {
+
+                    console.log(stgtargetclass)
+                }
+                var getclassname = document.getElementById(`bid${datasymbol}`)
+                if (getclassname !== null) {
+                    getclassname.innerText = "My bidprice would be: " + bidpriceset;
+                } else {
+                    console.log("getclassname is null");
+                    alert("We are having technical difficulty please try again later.")
+                }
+                if (debug === true) {
+
+                    console.log(getclassname);
+                }
+            } 
+        }
+        if(targetclass?.includes("askingprice")) {
+            var myaskingprice = event.target.value
+            var dataaskingprice = event.target.getAttribute("data-askingprice")
+            // this is where we are calculating the askingprice
+            var newaskingprice = Number(myaskingprice) * Number(dataaskingprice)
+            var askingpriceset = newaskingprice.toString()
+            // event.target.setAttribute("mynewaskprice", askingpriceset)
+            var targetclass = event.target.getAttribute("class")
+            if (targetclass !== null) {
+                var stgtargetclass = targetclass?.toString()
+
+                if (debug === true) {
+
+                    console.log(stgtargetclass)
+                }
+                var getclassname = document.getElementById(`${stgtargetclass}`)
+                if (getclassname !== null) {
+                    getclassname.innerText = "My asking price would be: " + askingpriceset;
+                } else {
+                    console.log("getclassname is null");
+                    alert("We are having technical difficulty please try again later.")
+                }
+                if (debug === true) {
+
+                    console.log(getclassname);
+                }
+            }
+ 
+        }
+    }
+
     // question: can we abstract these function, they look the same?
 
     useEffect(() => {
@@ -100,10 +162,10 @@ export default function Main() {
                                     <div className='cryptoinnercontainer'>
                                         <div>
                                             <p>Asking Price : {val["askPrice"]}</p>
-                                            <input className={val["symbol"]} type='number' data-askingprice={val["askPrice"]} placeholder='Estimate My Asking Price' onChange={askingprice} />
+                                            <input className={"askingprice" + val["symbol"]} type='number' data-askingprice={val["askPrice"]} placeholder='Estimate My Asking Price' onChange={updateprice} />
                                             <p className={"input" + val["symbol"] + "show"} id={val["symbol"]}/>
                                             <p>Bid Price : {val["bidPrice"]}</p>
-                                            <input className={"bidprice" + val["symbol"]} placeholder='Estimate My Bid Price' data-bidprice={val["bidPrice"]} type='number' onChange={bidprice} data-symbol={val["symbol"]}/>
+                                            <input className={"bidprice" + val["symbol"]} placeholder='Estimate My Bid Price' data-bidprice={val["bidPrice"]} type='number' onChange={updateprice} data-symbol={val["symbol"]}/>
                                             <p id={"bid" + val["symbol"]} />
                                         </div>
                                     </div>
