@@ -1,7 +1,8 @@
 import React, { useEffect, useState, ChangeEvent } from 'react'
 import { api } from '../Api/ApiRequest'
 
-const debug = true;
+// const debug = true;
+const debug = false;
 
 export default function Main() {
     const [crypto, setCrypto] = useState([]);
