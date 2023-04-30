@@ -6,73 +6,6 @@ const debug = true;
 export default function Main() {
     const [crypto, setCrypto] = useState([]);
 
-    const askingprice = (event: ChangeEvent<HTMLInputElement>) => {
-        if(debug === true) {
-            
-            console.log(event.target.value)
-        }
-        var myaskingprice = event.target.value
-        var dataaskingprice = event.target.getAttribute("data-askingprice")
-        // this is where we are calculating the askingprice
-        var newaskingprice = Number(myaskingprice) * Number(dataaskingprice)
-        var askingpriceset = newaskingprice.toString()
-        // event.target.setAttribute("mynewaskprice", askingpriceset)
-        var targetclass = event.target.getAttribute("class")
-        if(targetclass !== null) {
-            var stgtargetclass = targetclass?.toString()
-
-            if(debug === true) {
-    
-                console.log(stgtargetclass)
-            }
-            var getclassname = document.getElementById(`${stgtargetclass}`)
-            if (getclassname !== null) {
-                getclassname.innerText = "My asking price would be: " + askingpriceset;
-            } else {
-                console.log("getclassname is null");
-                alert("We are having technical difficulty please try again later.")
-            }
-            if(debug === true) {
-    
-                console.log(getclassname);
-            }
-        }
-
-    }
-
-    const bidprice = (event: ChangeEvent<HTMLInputElement>) => {
-        if (debug === true) {
-            console.log(event.target.value)
-        }
-        var mybidprice = event.target.value
-        var databidprice = event.target.getAttribute("data-bidprice")
-        var datasymbol = event.target.getAttribute("data-symbol")
-        // this is where we are calculating the bidprice
-        var newbidprice = Number(mybidprice) * Number(databidprice)
-        var bidpriceset = newbidprice.toString()
-        var targetclass = event.target.getAttribute("class")
-        if (targetclass !== null) {
-            var stgtargetclass = targetclass?.toString()
-
-            if (debug === true) {
-
-                console.log(stgtargetclass)
-            }
-            var getclassname = document.getElementById(`bid${datasymbol}`)
-            if (getclassname !== null) {
-                getclassname.innerText = "My bidprice would be: " + bidpriceset;
-            } else {
-                console.log("getclassname is null");
-                alert("We are having technical difficulty please try again later.")
-            }
-            if (debug === true) {
-
-                console.log(getclassname);
-            }
-        }
-
-    }
-
     const updateprice = (event:ChangeEvent<HTMLInputElement>) => {
         var target = event.target;
         var targetclass = event.target.getAttribute("class")
@@ -83,53 +16,53 @@ export default function Main() {
             // this is where we are calculating the bidprice
             var newbidprice = Number(mybidprice) * Number(databidprice)
             var bidpriceset = newbidprice.toString()
-            var targetclass = event.target.getAttribute("class")
-            if (targetclass !== null) {
-                var stgtargetclass = targetclass?.toString()
+            // var targetclass = event.target.getAttribute("class")
+            var stgtargetclass = targetclass?.toString()
 
-                if (debug === true) {
+            if (debug === true) {
 
-                    console.log(stgtargetclass)
-                }
-                var getclassname = document.getElementById(`bid${datasymbol}`)
-                if (getclassname !== null) {
-                    getclassname.innerText = "My bidprice would be: " + bidpriceset;
-                } else {
-                    console.log("getclassname is null");
-                    alert("We are having technical difficulty please try again later.")
-                }
-                if (debug === true) {
+                console.log(stgtargetclass)
+            }
+            var getclassname = document.getElementById(`bid${datasymbol}`)
+            console.log(getclassname)
+            if (getclassname !== null) {
+                getclassname.innerText = "My bidprice would be: " + bidpriceset;
+            } else {
+                console.log("getclassname is null");
+                alert("We are having technical difficulty please try again later.")
+            }
+            if (debug === true) {
 
-                    console.log(getclassname);
-                }
-            } 
+                console.log(getclassname);
+            }
+
         }
-        if(targetclass?.includes("askingprice")) {
-            var myaskingprice = event.target.value
-            var dataaskingprice = event.target.getAttribute("data-askingprice")
+        console.log(targetclass)
+        if(targetclass?.includes("askprice")) {
+            console.log("hit")
+            var myaskingprice = target.value
+            var dataaskingprice = target.getAttribute("data-askprice")
             // this is where we are calculating the askingprice
+            var datasymbol = event.target.getAttribute("data-symbol")
             var newaskingprice = Number(myaskingprice) * Number(dataaskingprice)
             var askingpriceset = newaskingprice.toString()
             // event.target.setAttribute("mynewaskprice", askingpriceset)
-            var targetclass = event.target.getAttribute("class")
-            if (targetclass !== null) {
-                var stgtargetclass = targetclass?.toString()
+            var stgtargetclass = targetclass?.toString()
 
-                if (debug === true) {
+            if (debug === true) {
 
-                    console.log(stgtargetclass)
-                }
-                var getclassname = document.getElementById(`${stgtargetclass}`)
-                if (getclassname !== null) {
-                    getclassname.innerText = "My asking price would be: " + askingpriceset;
-                } else {
-                    console.log("getclassname is null");
-                    alert("We are having technical difficulty please try again later.")
-                }
-                if (debug === true) {
+                console.log(stgtargetclass)
+            }
+            var getclassname = document.getElementById(`ask${datasymbol}`)
+            if (debug === true) {
 
-                    console.log(getclassname);
-                }
+                console.log(getclassname);
+            }
+            if (getclassname !== null) {
+                getclassname.innerText = "My asking price would be: " + askingpriceset;
+            } else {
+                console.log("getclassname is null");
+                alert("We are having technical difficulty please try again later.")
             }
  
         }
@@ -162,8 +95,8 @@ export default function Main() {
                                     <div className='cryptoinnercontainer'>
                                         <div>
                                             <p>Asking Price : {val["askPrice"]}</p>
-                                            <input className={"askingprice" + val["symbol"]} type='number' data-askingprice={val["askPrice"]} placeholder='Estimate My Asking Price' onChange={updateprice} />
-                                            <p className={"input" + val["symbol"] + "show"} id={val["symbol"]}/>
+                                            <input className={"askprice" + val["symbol"]} type='number' data-askprice={val["askPrice"]} placeholder='Estimate My Asking Price' onChange={updateprice} data-symbol={val["symbol"]} />
+                                            <p id={"ask" + val["symbol"]}/>
                                             <p>Bid Price : {val["bidPrice"]}</p>
                                             <input className={"bidprice" + val["symbol"]} placeholder='Estimate My Bid Price' data-bidprice={val["bidPrice"]} type='number' onChange={updateprice} data-symbol={val["symbol"]}/>
                                             <p id={"bid" + val["symbol"]} />
