@@ -10,19 +10,15 @@ export default function Main() {
         var target = event.target;
         var targetclass = target.getAttribute("class")
         var targetval = target.value
+        var datasymbol = target.getAttribute("data-symbol")
+        function calculateprice (price:any) {
+            var newbidprice = Number(targetval) * Number(price)
+            var bidpriceset = newbidprice.toString()
+            return bidpriceset
+        }
         if(targetclass?.includes("bidprice")) {
             var databidprice = target.getAttribute("data-bidprice")
-            var datasymbol = target.getAttribute("data-symbol")
-            // this is where we are calculating the bidprice
-            var newbidprice = Number(targetval) * Number(databidprice)
-            var bidpriceset = newbidprice.toString()
-            // var targetclass = event.target.getAttribute("class")
-            var stgtargetclass = targetclass?.toString()
-
-            if (debug === true) {
-
-                console.log(stgtargetclass)
-            }
+            var bidpriceset = calculateprice(databidprice)
             var getclassname = document.getElementById(`bid${datasymbol}`)
             console.log(getclassname)
             if (getclassname !== null) {
@@ -41,17 +37,7 @@ export default function Main() {
         if(targetclass?.includes("askprice")) {
             console.log("hit")
             var dataaskingprice = target.getAttribute("data-askprice")
-            // this is where we are calculating the askingprice
-            var datasymbol = target.getAttribute("data-symbol")
-            var newaskingprice = Number(targetval) * Number(dataaskingprice)
-            var askingpriceset = newaskingprice.toString()
-            // event.target.setAttribute("mynewaskprice", askingpriceset)
-            var stgtargetclass = targetclass?.toString()
-
-            if (debug === true) {
-
-                console.log(stgtargetclass)
-            }
+            var askingpriceset = calculateprice(dataaskingprice)
             var getclassname = document.getElementById(`ask${datasymbol}`)
             if (debug === true) {
 
