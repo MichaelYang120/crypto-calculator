@@ -1,8 +1,8 @@
 import React, { useEffect, useState, ChangeEvent } from 'react'
 import { api } from '../Api/ApiRequest'
 
-// const debug = true;
-const debug = false;
+const debug = true;
+// const debug = false;
 
 export default function Main() {
     const [crypto, setCrypto] = useState([]);
@@ -59,8 +59,11 @@ export default function Main() {
 
     }, [])
 
+    // can we add a feature for quick search?
+
     return (
         <>
+        <div>quick search goes here</div>
             {
                 crypto.map(val => {
                     if (val["askPrice"] !== "0.00000000" && val["bidPrice"] !== "0.00000000") {
