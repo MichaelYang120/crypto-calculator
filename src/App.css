@@ -43,6 +43,11 @@
 }
 
 .cryptocontainer {
+  display: block;
+}
+
+.cryptoinnercontainer {
   display: flex;
   justify-content: space-around;
+  align-items: right;
 }
