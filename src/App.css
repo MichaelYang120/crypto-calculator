@@ -51,3 +51,9 @@
   justify-content: space-around;
   align-items: right;
 }
+
+.mypricecontainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: right; 
+}

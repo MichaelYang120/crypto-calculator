@@ -71,16 +71,16 @@ export default function Main() {
                             <>
                                 <div className="cryptocontainer">
                                     <h3 className='cryptoname'>{val["symbol"]}</h3>
+                                    <div className='mypricecontainer'>
+                                        <p id={"ask" + val["symbol"]} />
+                                        <p id={"bid" + val["symbol"]} />
+                                    </div>
                                     <div className='cryptoinnercontainer'>
                                             <p>Asking Price : {val["askPrice"]}</p>
                                             <input className={"askprice" + val["symbol"]} type='number' data-askprice={val["askPrice"]} placeholder='Estimate My Asking Price' onChange={updateprice} data-symbol={val["symbol"]} />
                                             <p>Bid Price : {val["bidPrice"]}</p>
                                             <input className={"bidprice" + val["symbol"]} placeholder='Estimate My Bid Price' data-bidprice={val["bidPrice"]} type='number' onChange={updateprice} data-symbol={val["symbol"]}/>
                                     </div>
-                                            <div className='mypricecontainer'>
-                                                <p id={"ask" + val["symbol"]}/>
-                                                <p id={"bid" + val["symbol"]} />
-                                            </div>
                                 </div>
                             </>
                         )
