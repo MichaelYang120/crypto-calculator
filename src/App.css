@@ -1,15 +1,32 @@
+.maincontainer {
+  padding: 10px 10px;
+  background-color: aliceblue;
+  margin: 10px;
+}
+
+.cryptoname {
+  text-align: center;
+}
+
 .cryptocontainer {
-  display: block;
+  /* display: block; */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .cryptoinnercontainer {
   display: flex;
   justify-content: space-around;
   align-items: right;
+
 }
 
 .mypricecontainer {
-  display: flex;
-  justify-content: space-around;
-  align-items: right; 
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+}
+
+#inputdefault {
+  width: 200px;
 }

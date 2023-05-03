@@ -20,15 +20,20 @@ export default function Main() {
 		}
 		function updatetext(priceset: string, pricetype: string) {
 			var getclassname = document.getElementById(`${pricetype}${datasymbol}`);
-			console.log(getclassname);
-			if (getclassname !== null) {
-				getclassname.innerText = `My ${pricetype} price would be: ` + priceset;
-			} else {
-				console.log("getclassname is null");
-				alert("We are having technical difficulty please try again later.");
-			}
-			if (debug === true) {
+			if (priceset !== "0") {
 				console.log(getclassname);
+				if (getclassname !== null) {
+					getclassname.innerText =
+						`My ${pricetype} price would be: ` + priceset;
+				} else {
+					console.log("getclassname is null");
+					alert("We are having technical difficulty please try again later.");
+				}
+				if (debug === true) {
+					console.log(getclassname);
+				}
+			} else {
+				console.log(getclassname?.style);
 			}
 		}
 		if (targetclass?.includes("bidprice")) {
@@ -65,35 +70,35 @@ export default function Main() {
 					val["bidPrice"] !== "0.00000000"
 				) {
 					return (
-						<>
-							<div className="cryptocontainer">
-								<h3 className="cryptoname">{val["symbol"]}</h3>
-								<div className="mypricecontainer">
-									<p id={"ask" + val["symbol"]} />
-									<p id={"bid" + val["symbol"]} />
-								</div>
-								<div className="cryptoinnercontainer">
-									<p>Asking Price : {val["askPrice"]}</p>
-									<input
-										className={"askprice" + val["symbol"]}
-										type="number"
-										data-askprice={val["askPrice"]}
-										placeholder="Estimate My Asking Price"
-										onChange={updateprice}
-										data-symbol={val["symbol"]}
-									/>
-									<p>Bid Price : {val["bidPrice"]}</p>
-									<input
-										className={"bidprice" + val["symbol"]}
-										type="number"
-										data-bidprice={val["bidPrice"]}
-										placeholder="Estimate My Bid Price"
-										onChange={updateprice}
-										data-symbol={val["symbol"]}
-									/>
-								</div>
+						<div className="maincontainer">
+							<h3 className="cryptoname">{val["symbol"]}</h3>
+							<div className="mypricecontainer">
+								<p id={"ask" + val["symbol"]} />
+								<p id={"bid" + val["symbol"]} />
 							</div>
-						</>
+							<div className="cryptoinnercontainer">
+								<p>Asking Price : {val["askPrice"]}</p>
+								<input
+                                    id="inputdefault"
+									className={"askprice" + val["symbol"]}
+									type="number"
+									data-askprice={val["askPrice"]}
+									placeholder="Estimate My Asking Price"
+									onChange={updateprice}
+									data-symbol={val["symbol"]}
+								/>
+								<p>Bid Price : {val["bidPrice"]}</p>
+								<input
+                                    id="inputdefault"
+									className={"bidprice" + val["symbol"]}
+									type="number"
+									data-bidprice={val["bidPrice"]}
+									placeholder="Estimate My Bid Price"
+									onChange={updateprice}
+									data-symbol={val["symbol"]}
+								/>
+							</div>
+						</div>
 					);
 				}
 			})}
