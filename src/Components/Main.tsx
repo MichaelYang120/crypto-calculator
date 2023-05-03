@@ -23,6 +23,7 @@ export default function Main() {
 			if (priceset !== "0") {
 				console.log(getclassname);
 				if (getclassname !== null) {
+                    var displayblock = getclassname?.setAttribute("style", "display: block;")
 					getclassname.innerText =
 						`My ${pricetype} price would be: ` + priceset;
 				} else {
@@ -33,7 +34,8 @@ export default function Main() {
 					console.log(getclassname);
 				}
 			} else {
-				console.log(getclassname?.style);
+				var displaynone = getclassname?.getAttribute("style");
+                displaynone?.replace("display:block;","display:none;")
 			}
 		}
 		if (targetclass?.includes("bidprice")) {
