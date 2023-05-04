@@ -26,6 +26,10 @@ export default function Main() {
 						getclassname.innerText =
 							`My ${pricetype} price would be: ` + priceset;
 						getclassname.style.color = "black"
+						if(priceset.toString().includes("-")) {
+							getclassname.innerText = "Please enter a valid value"
+							getclassname.style.color = "red"	
+						}
 					} else {
 						getclassname.innerText = "Please enter a value"
 						getclassname.style.color = "red"
