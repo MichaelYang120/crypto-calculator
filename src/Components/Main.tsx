@@ -20,12 +20,16 @@ export default function Main() {
 		}
 		function updatetext(priceset: string, pricetype: string) {
 			var getclassname = document.getElementById(`${pricetype}${datasymbol}`);
-			if (priceset !== "0") {
-				console.log(getclassname);
-				if (getclassname !== null) {
-                    var displayblock = getclassname?.setAttribute("style", "display: block;")
-					getclassname.innerText =
-						`My ${pricetype} price would be: ` + priceset;
+			console.log(getclassname);
+			if (getclassname !== null) {
+					if (priceset !== "0") {
+						getclassname.innerText =
+							`My ${pricetype} price would be: ` + priceset;
+						getclassname.style.color = "black"
+					} else {
+						getclassname.innerText = "Please enter a value"
+						getclassname.style.color = "red"
+					}
 				} else {
 					console.log("getclassname is null");
 					alert("We are having technical difficulty please try again later.");
@@ -33,10 +37,6 @@ export default function Main() {
 				if (debug === true) {
 					console.log(getclassname);
 				}
-			} else {
-				var displaynone = getclassname?.getAttribute("style");
-                displaynone?.replace("display:block;","display:none;")
-			}
 		}
 		if (targetclass?.includes("bidprice")) {
 			var databidprice = target.getAttribute("data-bidprice");
