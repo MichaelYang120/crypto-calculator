@@ -22,25 +22,25 @@ export default function Main() {
 			var getclassname = document.getElementById(`${pricetype}${datasymbol}`);
 			console.log(getclassname);
 			if (getclassname !== null) {
-					if (priceset !== "0") {
-						getclassname.innerText =
-							`My ${pricetype} price would be: ` + priceset;
-						getclassname.style.color = "black"
-						if(priceset.toString().includes("-")) {
-							getclassname.innerText = "Please enter a valid value"
-							getclassname.style.color = "red"	
-						}
-					} else {
-						getclassname.innerText = "Please enter a value"
+				if (priceset !== "0") {
+					getclassname.innerText =
+						`My ${pricetype} price would be: ${priceset}`;
+					getclassname.style.color = "black"
+					if (priceset.toString().includes("-")) {
+						getclassname.innerText = "Please enter a valid value"
 						getclassname.style.color = "red"
 					}
 				} else {
-					console.log("getclassname is null");
-					alert("We are having technical difficulty please try again later.");
+					getclassname.innerText = "Please enter a value"
+					getclassname.style.color = "red"
 				}
-				if (debug === true) {
-					console.log(getclassname);
-				}
+			} else {
+				console.log("getclassname is null");
+				alert("We are having technical difficulty please try again later.");
+			}
+			if (debug === true) {
+				console.log(getclassname);
+			}
 		}
 		if (targetclass?.includes("bidprice")) {
 			var databidprice = target.getAttribute("data-bidprice");
@@ -85,7 +85,7 @@ export default function Main() {
 							<div className="cryptoinnercontainer">
 								<p>Asking Price : {val["askPrice"]}</p>
 								<input
-                                    id="inputdefault"
+									id="inputdefault"
 									className={"askprice" + val["symbol"]}
 									type="number"
 									data-askprice={val["askPrice"]}
@@ -95,7 +95,7 @@ export default function Main() {
 								/>
 								<p>Bid Price : {val["bidPrice"]}</p>
 								<input
-                                    id="inputdefault"
+									id="inputdefault"
 									className={"bidprice" + val["symbol"]}
 									type="number"
 									data-bidprice={val["bidPrice"]}
