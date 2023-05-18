@@ -1,8 +1,8 @@
 import React, { useEffect, useState, ChangeEvent } from "react";
 import { api } from "../Api/ApiRequest";
 
-const debug = true;
-// const debug = false;
+// const debug = true;
+const debug = false;
 
 export default function Main() {
 	const [crypto, setCrypto] = useState([]);
@@ -20,12 +20,15 @@ export default function Main() {
 		}
 		function updatetext(priceset: string, pricetype: string) {
 			var getclassname = document.getElementById(`${pricetype}${datasymbol}`);
-			console.log(getclassname);
+			if(debug) {
+				console.log(getclassname);
+
+			}
 			if (getclassname !== null) {
 				if (priceset !== "0") {
 					getclassname.innerText =
 						`My ${pricetype} price would be: ${priceset}`;
-					getclassname.style.color = "black"
+					getclassname.style.color = "black";
 					if (priceset.toString().includes("-")) {
 						getclassname.innerText = "Please enter a valid value"
 						getclassname.style.color = "red"
@@ -35,10 +38,13 @@ export default function Main() {
 					getclassname.style.color = "red"
 				}
 			} else {
-				console.log("getclassname is null");
-				alert("We are having technical difficulty please try again later.");
+				if (debug) {
+					console.log("getclassname is null");
+					alert("We are having technical difficulty please try again later.");
+
+				}
 			}
-			if (debug === true) {
+			if (debug) {
 				console.log(getclassname);
 			}
 		}
@@ -60,7 +66,7 @@ export default function Main() {
 			setCrypto(result);
 		}
 		getcrypto();
-		if (debug === true) {
+		if (debug) {
 			console.log(crypto);
 		}
 	}, []);
