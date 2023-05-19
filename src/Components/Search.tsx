@@ -20,12 +20,15 @@ export default function Search() {
 
 	return (
 		<>
-            <select name="cryptoselect" id="cryptoselect">
-                <option>select your crypto token</option>
-                {crypto.map((val) =>
-                <option>{val["symbol"]}</option>
-                )}
-            </select>
+            <form action="selectcrypto">
+                <select name="cryptoselect" id="cryptoselect">
+                    <option>select your crypto token</option>
+                    {crypto.map((val) =>
+                    <option data-askprice={val["askPrice"]} data-bidprice={val["bidPrice"]} data-symbol={val["symbol"]}>{val["symbol"]}</option>
+                    )}
+                </select>
+                <button type="submit">Submit</button>
+            </form>
 		</>
 	);
 }
