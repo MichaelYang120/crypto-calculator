@@ -76,7 +76,6 @@ export default function Main() {
 
 	return (
 		<>
-			<div>quick search goes here</div>
 			{crypto.map((val) => {
 				if (
 					val["askPrice"] !== "0.00000000" &&
