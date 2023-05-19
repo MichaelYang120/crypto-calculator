@@ -18,6 +18,7 @@ export default function Search() {
 		}
 	}, []);
 
+    // notes: ticket symbols is in the url when submited
 	return (
 		<>
             <form action="selectcrypto">
