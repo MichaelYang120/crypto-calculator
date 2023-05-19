@@ -72,6 +72,7 @@ export default function Main() {
 	}, []);
 
 	// can we add a feature for quick search?
+	// there is too much data/information the is being loaded at once, this cause rendering to load slow. We will have to go back on and revisit for a better approach.
 
 	return (
 		<>
