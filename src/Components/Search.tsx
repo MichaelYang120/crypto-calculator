@@ -7,6 +7,7 @@ const debug = false;
 export default function Search() {
     const [crypto, setCrypto] = useState([]);
 
+    // notes: we can store the value here on sumbit handler or retrieve the data from the url after submitting the form.
     const submithandler = (event: React.FormEvent<HTMLButtonElement>) => {
         event.preventDefault();
         console.log(event)
