@@ -7,6 +7,11 @@ const debug = false;
 export default function Search() {
     const [crypto, setCrypto] = useState([]);
 
+    const submithandler = (event: React.FormEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+        console.log(event)
+    }
+
     useEffect(() => {
 		async function getcrypto() {
 			var result: any = await api();
@@ -28,7 +33,7 @@ export default function Search() {
                     <option data-askprice={val["askPrice"]} data-bidprice={val["bidPrice"]} data-symbol={val["symbol"]}>{val["symbol"]}</option>
                     )}
                 </select>
-                <button type="submit">Submit</button>
+                <button type="submit" onSubmit={submithandler}>Submit</button>
             </form>
 		</>
 	);
