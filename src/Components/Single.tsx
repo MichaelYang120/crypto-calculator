@@ -11,9 +11,10 @@ export default function Single() {
 		console.log(url)
 
 	}
-
-	
-
+	function geturlsymbolurl() {
+		const replaceurl = url.replace(/.*select=/, "");
+		return replaceurl
+	}
 	return (
 		<>
 			<div>
