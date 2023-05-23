@@ -15,7 +15,7 @@ export default function Single() {
 
 	}
 	function geturlsymbolurl() {
-		const replaceurl = url.replace(/.*select=/, "");
+		var replaceurl = url.replace(/.*select=/, "");
 		return replaceurl
 	}
 	
@@ -29,6 +29,16 @@ export default function Single() {
 			// console.log(crypto);
 		}
 	}, []);
+
+	var currentselectedsymbol = geturlsymbolurl();
+	if (currentselectedsymbol !== null) {
+		console.log(currentselectedsymbol)
+		crypto.map((val => {
+			if (currentselectedsymbol === val["symbol"]) {
+				
+			}
+		}))
+	}
 
 	return (
 		<>
