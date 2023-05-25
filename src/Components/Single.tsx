@@ -5,13 +5,14 @@ const debug = true;
 
 export default function Single() {
 	const [crypto, setCrypto] = useState([]);
+	const [newarray, setNewArray] = useState([]);
 
 	function getCurrentURL () {
 		return window.location.href
 	}
 	const url = getCurrentURL()
 	if (debug) {
-		console.log(url)
+		// console.log(url)
 
 	}
 	function geturlsymbolurl() {
@@ -32,19 +33,54 @@ export default function Single() {
 
 	var currentselectedsymbol = geturlsymbolurl();
 	if (currentselectedsymbol !== null) {
-		console.log(currentselectedsymbol)
-		crypto.map((val => {
-			if (currentselectedsymbol === val["symbol"]) {
+		// console.log(currentselectedsymbol)
+		var getvalues:any = crypto.map((val => {
+			// if (currentselectedsymbol === val["symbol"]) {
+			// 	var newarray = 
+			// 		{
+			// 			"symbol" : val["symbol"],
+			// 			"askprice" : val["askPrice"],
+			// 			"bidprice" : val["bidPrice"]
+			// 		}
 				
-			}
+			// 	return newarray;
+			// }
+			if(currentselectedsymbol === val["symbol"]) {
+				return val["symbol"]
+			} 
 		}))
+		crypto.forEach(element => {
+			if(currentselectedsymbol === element["symbol"]) {
+				console.log(element)
+			}
+		});
+		// setNewArray(getvalues)
+	}
+	// console.log(getvalues)
+
+	if(getvalues !== "undefined") {
+		// console.log(getvalues)
 	}
 
+	// if(newarray !== null) {
+	// 	return (
+	// 		<>test</>
+	// 		// <>
+	// 		// 	{newarray.map((val) => {
+	// 		// 		<div>{val["symbol"]}</div>
+	// 		// 	})}
+	// 		// </>
+	// 	);
+
+	// } else {
+	// 	return (
+	// 		<>
+	// 		</>
+	// 	)
+	// }
+
 	return (
-		<>
-			<div>
-				Single symbol
-			</div>
-		</>
-	);
+		<>test</>
+	)
+
 }
