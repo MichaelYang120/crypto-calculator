@@ -5,7 +5,6 @@ const debug = true;
 
 export default function Single() {
 	const [crypto, setCrypto] = useState([]);
-	const [newarray, setNewArray] = useState([]);
 
 	function getCurrentURL () {
 		return window.location.href
@@ -46,7 +45,6 @@ export default function Single() {
 
 	}
 
-	var myselectedsymbol = getvalues(urlreg, crypto)
 	return (
 		<>
 		{crypto.map((val) => {
