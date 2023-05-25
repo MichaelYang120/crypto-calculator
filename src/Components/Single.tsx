@@ -33,17 +33,20 @@ export default function Single() {
 
 	var urlreg = geturlsymbolurl();
 	var getvalues = (currentselectedsymbol=urlreg, set=crypto) => {
+		var status = false;
 		set.forEach(element => {
-			if(currentselectedsymbol === element["symbol"]) {
-				console.log(element)
+			status = true;
+			if(currentselectedsymbol === element["symbol"] && status === true) {
+				// console.log(element)
 				var newvalue = element;
 				return newvalue;
 			}
+			status = false;
 		});
 
 	}
 
-	var myselectedsymbol = getvalues()
+	var myselectedsymbol = getvalues(urlreg, crypto)
 	console.log(myselectedsymbol)
 
 	return (
