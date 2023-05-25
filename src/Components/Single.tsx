@@ -33,52 +33,14 @@ export default function Single() {
 
 	var currentselectedsymbol = geturlsymbolurl();
 	if (currentselectedsymbol !== null) {
-		// console.log(currentselectedsymbol)
-		var getvalues:any = crypto.map((val => {
-			// if (currentselectedsymbol === val["symbol"]) {
-			// 	var newarray = 
-			// 		{
-			// 			"symbol" : val["symbol"],
-			// 			"askprice" : val["askPrice"],
-			// 			"bidprice" : val["bidPrice"]
-			// 		}
-				
-			// 	return newarray;
-			// }
-			if(currentselectedsymbol === val["symbol"]) {
-				return val["symbol"]
-			} 
-		}))
-		crypto.forEach(element => {
+		var getvalues = crypto.forEach(element => {
 			if(currentselectedsymbol === element["symbol"]) {
-				console.log(element)
+				return element;
 			}
 		});
-		// setNewArray(getvalues)
-	}
-	// console.log(getvalues)
-
-	if(getvalues !== "undefined") {
-		// console.log(getvalues)
 	}
 
-	// if(newarray !== null) {
-	// 	return (
-	// 		<>test</>
-	// 		// <>
-	// 		// 	{newarray.map((val) => {
-	// 		// 		<div>{val["symbol"]}</div>
-	// 		// 	})}
-	// 		// </>
-	// 	);
-
-	// } else {
-	// 	return (
-	// 		<>
-	// 		</>
-	// 	)
-	// }
-
+	
 	return (
 		<>test</>
 	)
