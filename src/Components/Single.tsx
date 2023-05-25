@@ -31,18 +31,25 @@ export default function Single() {
 		}
 	}, []);
 
-	var currentselectedsymbol = geturlsymbolurl();
-	if (currentselectedsymbol !== null) {
-		var getvalues = crypto.forEach(element => {
+	var urlreg = geturlsymbolurl();
+	var getvalues = (currentselectedsymbol=urlreg, set=crypto) => {
+		set.forEach(element => {
 			if(currentselectedsymbol === element["symbol"]) {
-				return element;
+				console.log(element)
+				var newvalue = element;
+				return newvalue;
 			}
 		});
+
 	}
 
-	
+	var myselectedsymbol = getvalues()
+	console.log(myselectedsymbol)
+
 	return (
-		<>test</>
+		<>
+		
+		</>
 	)
 
 }
