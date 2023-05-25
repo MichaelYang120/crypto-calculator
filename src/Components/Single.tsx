@@ -37,7 +37,7 @@ export default function Single() {
 		set.forEach(element => {
 			status = true;
 			if(currentselectedsymbol === element["symbol"] && status === true) {
-				// console.log(element)
+				console.log(element)
 				var newvalue = element;
 				return newvalue;
 			}
@@ -47,11 +47,15 @@ export default function Single() {
 	}
 
 	var myselectedsymbol = getvalues(urlreg, crypto)
-	console.log(myselectedsymbol)
-
 	return (
 		<>
-		
+		{crypto.map((val) => {
+			if(val["symbol"] === urlreg) {
+				<div>{val} testing</div>
+			} else {
+				<div>none</div>
+			}
+		})}
 		</>
 	)
 
