@@ -78,6 +78,28 @@ export default function Main() {
 		margin: "10px"
 	}
 
+	const cryptoname = {
+		textAlign: "center" as "center",
+	}
+	  
+	const cryptoinnercontainer = {
+		display: "flex",
+		justifyContent: "space-around",
+		alignItems: "right" as "right",
+	  
+	}
+	  
+	const mypricecontainer = {
+		display: "grid",
+		gridTemplateColumns: "repeat(2, 1fr)",
+		textAlign: "center" as "center",
+	}
+	  
+	const inputdefault = {
+		width: "200px"
+	}
+
+
 	// can we add a feature for quick search?
 	// there is too much data/information the is being loaded at once, this cause rendering to load slow. We will have to go back on and revisit for a better approach.
 
@@ -90,15 +112,15 @@ export default function Main() {
 				) {
 					return (
 						<div style={maincontainer}>
-							<h3 className="cryptoname">{val["symbol"]}</h3>
-							<div className="mypricecontainer">
+							<h3 style={cryptoname}>{val["symbol"]}</h3>
+							<div style={mypricecontainer}>
 								<p id={"ask" + val["symbol"]} />
 								<p id={"bid" + val["symbol"]} />
 							</div>
-							<div className="cryptoinnercontainer">
+							<div style={cryptoinnercontainer}>
 								<p>Asking Price : {val["askPrice"]}</p>
 								<input
-									id="inputdefault"
+									style={inputdefault}
 									className={"askprice" + val["symbol"]}
 									type="number"
 									data-askprice={val["askPrice"]}
@@ -108,7 +130,7 @@ export default function Main() {
 								/>
 								<p>Bid Price : {val["bidPrice"]}</p>
 								<input
-									id="inputdefault"
+									style={inputdefault}
 									className={"bidprice" + val["symbol"]}
 									type="number"
 									data-bidprice={val["bidPrice"]}
