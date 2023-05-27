@@ -71,6 +71,13 @@ export default function Main() {
 		}
 	}, []);
 
+	// styles
+	const maincontainer = {
+		padding: "10px 10px",
+		backgroundColor: "aliceblue",
+		margin: "10px"
+	}
+
 	// can we add a feature for quick search?
 	// there is too much data/information the is being loaded at once, this cause rendering to load slow. We will have to go back on and revisit for a better approach.
 
@@ -82,7 +89,7 @@ export default function Main() {
 					val["bidPrice"] !== "0.00000000"
 				) {
 					return (
-						<div className="maincontainer">
+						<div style={maincontainer}>
 							<h3 className="cryptoname">{val["symbol"]}</h3>
 							<div className="mypricecontainer">
 								<p id={"ask" + val["symbol"]} />

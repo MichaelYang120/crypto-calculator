@@ -44,6 +44,7 @@ export default function Single() {
 		});
 
 	}
+	console.log(getvalues())
 
 	return (
 		<>
